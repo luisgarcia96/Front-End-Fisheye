@@ -2,7 +2,7 @@ import { ApiJson } from "../../api/apiJson.js";
 import { photographerFactory } from "../factories/photographerFactory.js";
 
     async function getPhotographers() {
-        // We get the photographers from the JSON file
+
         const api = new ApiJson('../../data/photographers.json');
         const data = await api.getElement();
         const photographers = data.photographers;

@@ -1,0 +1,5 @@
+class ImageModel {
+    constructor(data) {
+        
+    }
+}

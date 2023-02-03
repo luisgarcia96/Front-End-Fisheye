@@ -13,11 +13,19 @@
         <img src="assets/images/logo.png" class="logo" />
       </a>
     </header>
+
     <main id="main">
-      <div class="photograph-header">
+      <!-- <section class="photograph-header">
+        <div class="photograph-header-info">
+          <h2>${name}</h2>
+          <p class="city">${city}, ${country}</p>
+          <p class="tagline">${tagline}</p>
+        </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+        <img src="${portrait}" class="photograph-header-picture" alt="Photographer Picture">
+      </section> -->
     </main>
+
     <div id="contact_modal">
 			<div class="modal">
 				<header>
@@ -33,7 +41,8 @@
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
+
+    <script type="module" src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

@@ -2,9 +2,14 @@ import { Image } from "../../models/imageModel";
 import { Video } from "../../models/videoModel";
 
 export function mediaFactory(data) {
+
+    let media = null;
+
     if (data.image) {
-        return new Image(data);
+        media = new Image(data);
     } else if (data.video) {
-        return new Video(data);
+        media = new Video(data);
     }
+
+    return {media}
 }

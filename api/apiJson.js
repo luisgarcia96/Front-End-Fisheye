@@ -3,7 +3,7 @@ class ApiJson {
         this._url = url;
     }
 
-    async getElement() {
+    async getData() {
         try {
             // We get the photographers from the JSON file
             const response = await fetch(this._url);
@@ -25,7 +25,7 @@ class PhotographerApi extends ApiJson {
     }
 
     async getPhotographers() {
-        const data = await this.getElement();
+        const data = await this.getData();
         return data.photographers;
     }
 }
@@ -36,7 +36,7 @@ class MediaApi extends ApiJson {
     }
 
     async getMedia() {
-        const data = await this.getElement();
+        const data = await this.getData();
         return data.media;
     }
 }

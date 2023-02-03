@@ -1,9 +1,11 @@
 /**
- * Generate an article html tag containing the photographer's info
+ * Generate an article html tag containing the 
+ * photographer's info for the photographer's profile page
+ * 
  * @param {Photographer} photographer 
  * @returns An article html tag
  */
-export function getUserCardDOM(photographer) {
+export function getUserCardHome(photographer) {
 
     const { id, name, portrait, price, city, country, tagline } = photographer;
 
@@ -15,13 +17,6 @@ export function getUserCardDOM(photographer) {
 
     const h2 = document.createElement( 'h2' );
     h2.textContent = name;
-
-    const anchor = document.createElement( 'a' );
-    anchor.href = `../photographer.html?id=${id}&name=${name}`;
-    anchor.classList.add('profile_link')
-    anchor.appendChild(img);
-    anchor.appendChild(h2);
-
 
     const p1 = document.createElement( 'p' );
     p1.textContent = `${city}, ${country}`

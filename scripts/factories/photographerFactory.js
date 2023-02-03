@@ -1,13 +1,18 @@
 import { Photographer } from "../../models/photographerModel.js";
-import { getUserCardDOM } from "../utils/userCardDOM.js";
+import { gethomeCard } from "../../templates/homeCardTemplate.js";
+import { getProfilePageHeader } from "../../templates/profilePageHeaderTemplate.js";
 
 export function photographerFactory(data) {
 
     const photographer = new Photographer(data);
 
-    function generateUserCard() { 
-        return getUserCardDOM(photographer) 
+    function generateHomeCard() { 
+        return gethomeCard(photographer) 
     }
 
-    return { photographer, generateUserCard}
+    function generateProfileHeader() {
+        return getProfilePageHeader(photographer);
+    }
+
+    return { photographer, generateHomeCard, generateProfileHeader}
 }

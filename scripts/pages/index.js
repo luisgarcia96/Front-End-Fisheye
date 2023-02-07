@@ -1,5 +1,6 @@
 import { ApiJson } from "../../api/apiJson.js";
 import { photographerFactory } from "../factories/photographerFactory.js";
+import { getHomeCardTemplate } from "../../templates/homeCardTemplate.js";
 
     async function getPhotographers() {
 
@@ -15,7 +16,7 @@ import { photographerFactory } from "../factories/photographerFactory.js";
         
         photographers.forEach((photographer) => {
             const photographerModel = photographerFactory(photographer);
-            const photographerHomeCard = photographerModel.generateHomeCard();
+            const photographerHomeCard = getHomeCardTemplate(photographerModel);
             photographersSection.insertAdjacentHTML("beforeend", photographerHomeCard);
         });
     };

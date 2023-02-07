@@ -5,7 +5,7 @@
  * @param {Photographer} photographer 
  * @returns An article html tag
  */
-export function gethomeCard(photographer) {
+export function getHomeCardTemplate(photographer) {
 
     const { id, name, portrait, price, city, country, tagline } = photographer;
 

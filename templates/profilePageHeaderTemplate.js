@@ -1,5 +1,5 @@
 
-export function getProfilePageHeader(photographer) {
+export function getProfileHeaderTemplate(photographer) {
     
     const { id, name, portrait, city, country, tagline } = photographer;
     

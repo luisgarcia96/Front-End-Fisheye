@@ -1,15 +1,10 @@
-import { Image } from "../../models/imageModel";
-import { Video } from "../../models/videoModel";
+import { Image } from "../../models/imageModel.js";
+import { Video } from "../../models/videoModel.js";
 
 export function mediaFactory(data) {
-
-    let media = null;
-
     if (data.image) {
-        media = new Image(data);
+        return new Image(data);
     } else if (data.video) {
-        media = new Video(data);
+        return new Video(data);
     }
-
-    return {media}
 }

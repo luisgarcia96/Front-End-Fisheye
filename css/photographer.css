@@ -129,6 +129,32 @@
     border-radius: 5px;
 }
 
+.price-likes-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 376px;
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0;
+    right: 36px;
+    padding: 0 1rem;
+    border-radius: 5px 5px 0 0;
+}
+
+.total-likes-container {
+    display: flex;
+    align-items: center;
+}
+
+.total-likes, .price {
+    font-weight: 500;
+    font-size: 24px;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
 /* Contact Modal */
 .modal {

@@ -53,7 +53,7 @@ function displayData(photographer, photographerMedia) {
     const photographerHeader = getProfileHeaderTemplate(photographer);
 
     //Generate the media part
-    const profileMediaSection = getProfileMediasTemplate(photographerMedia);
+    const profileMediaSection = getProfileMediasTemplate(photographer, photographerMedia);
 
     profileMainTag.insertAdjacentHTML("beforeend", photographerHeader);
     profileMainTag.insertAdjacentHTML("beforeend", profileMediaSection);

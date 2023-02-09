@@ -1,10 +1,14 @@
-export function getProfileMediasTemplate(photographerMedia) {
+export function getProfileMediasTemplate(photographer, photographerMedia) {
 
     let mediasContainer = document.createElement('div');
     mediasContainer.classList.add('medias-container');
 
+    let likesCounter = 0;
+
     for (const media of photographerMedia) {
-        const { id, photographerId, title, name, likes, date, price, generateContent } = media;
+        const { title, likes, generateContent } = media;
+
+        likesCounter += likes;
 
         let singleMediaTemplate = `
             <div class="single-media">
@@ -35,6 +39,13 @@ export function getProfileMediasTemplate(photographerMedia) {
                 </div>
             </div>
             ${mediasContainer.outerHTML}
+            <div class="price-likes-bottom-container">
+                <div class="total-likes-container">
+                    <p class="total-likes">${likesCounter}</p>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <p class="price">${photographer.price}€ / jour</p>
+            </div>
         </section>   
     `;
 

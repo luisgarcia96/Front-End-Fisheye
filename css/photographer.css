@@ -2,13 +2,33 @@
     display: none;
 }
 
+/* Profile Header */
 .photograph-header {
     background-color: #FAFAFA;
-    height: 300px;
     margin: 0 100px;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.photograph-header-info h2{
+    color: #D3573C;
+    font-size: 64px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.city{
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
 }
 
 .contact_button {
+    display: inline-block;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -21,6 +41,96 @@
     cursor: pointer;
 }
 
+.photograph-header-picture {
+    height: 15rem;
+    width: 15rem;
+}
+
+.photograph-header-picture img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+
+/* Medias section */
+.photographer-medias {
+    margin: 0 100px;
+}
+/* Filter  */
+.filter-bar-container {
+    display: flex;
+}
+
+.filter-message {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.filter-modal {
+
+}
+
+/* Medias section */
+.medias-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.single-media {
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
+
+.thumbnail-container {
+    height: 350px;
+    width: 350px;
+    margin-bottom: 10px;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 0;
+}
+
+.info-container i {
+    color: #911C1C;
+}
+
+.info-container i:hover {
+    cursor: pointer;
+}
+
+
+.single-media-title {
+    font-weight: 400;
+    font-size: 24px;
+    color: #911C1C;
+    margin: 0;
+}
+
+.single-media-likes {
+    font-weight: 500;
+    font-size: 24px;
+    color: #911C1C;
+    margin: 0 1rem 0 auto;
+}
+
+.single-media img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+/* Contact Modal */
 .modal {
     border-radius: 5px;
     background-color: #DB8876;

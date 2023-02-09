@@ -33,7 +33,7 @@ export class Image {
 
     get generateContent() {
         return `
-            <img src="../assets/images/${this._name}"
+            <img src="../assets/images/${this._name}" alt=${this._title}/>
         `
     }
 }

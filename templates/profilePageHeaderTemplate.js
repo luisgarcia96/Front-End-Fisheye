@@ -11,7 +11,9 @@ export function getProfileHeaderTemplate(photographer) {
                 <p class="tagline">${tagline}</p>
             </div>
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            <img src="${portrait}" class="photograph-header-picture" alt="Photographer Picture">
+            <div class="photograph-header-picture">
+                <img src="${portrait}"  alt="Photographer Picture">
+            </div>
         </section>
     `;
     

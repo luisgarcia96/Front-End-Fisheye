@@ -47,13 +47,14 @@ async function getPhotographerMedia(id) {
 }
 
 function displayData(photographer, photographerMedia) {
-    const profileMainTag = document.querySelector("#main");
-
+    
     //Generate the Header
     const photographerHeader = getProfileHeaderTemplate(photographer);
-
+    
     //Generate the media part
     const profileMediaSection = getProfileMediasTemplate(photographer, photographerMedia);
+    
+    const profileMainTag = document.querySelector("#main");
 
     profileMainTag.insertAdjacentHTML("beforeend", photographerHeader);
     profileMainTag.insertAdjacentHTML("beforeend", profileMediaSection);

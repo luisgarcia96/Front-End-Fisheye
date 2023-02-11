@@ -6,7 +6,7 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
     let likesCounter = 0;
 
     for (const media of photographerMedia) {
-        const { title, likes, generateContent } = media;
+        const { title, name, likes, generateContent } = media;
 
         likesCounter += likes;
 

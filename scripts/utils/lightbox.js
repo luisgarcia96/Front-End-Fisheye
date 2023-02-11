@@ -4,8 +4,9 @@ function displayLightbox() {
 }
 
 function closeLightbox() {
-    const lightbox = document.querySelector(".lightbox>header");
-    lightbox.addEventListener('click', () => {
+    const lightbox = document.querySelector("#lightbox");
+    const closeIcon = lightbox.querySelector('.closeIcon');
+    closeIcon.addEventListener('click', () => {
         lightbox.style.display = "none";
     })
 }

@@ -33,8 +33,7 @@ export class Video {
 
     get generateContent() {
         return `
-            <video width="350" height="350">
-                <source src="../assets/images/${this._name}">
+            <video src="../assets/images/${this._name}">
                 Your browser does not support vide tag. 
             </video>
         `

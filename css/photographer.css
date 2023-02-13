@@ -172,7 +172,7 @@
     max-width: 1240px;
     max-height: 980px;
     padding: 1rem;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
@@ -194,6 +194,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    margin: auto;
 }
 
 .lightbox-media-container {

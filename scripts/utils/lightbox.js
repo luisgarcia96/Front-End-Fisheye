@@ -1,9 +1,15 @@
 //Helper functions
-function getMediaSources() {
+function getMediasSources() {
+
+    let currentIndex = 0;
+
     const thumbnails = document.querySelectorAll('.thumbnail-container');
+    const previousButton = document.querySelector('.previous'); 
+    const nextButton = document.querySelector('.next');
     let mediasSources = [];
 
-    thumbnails.forEach(function(thumbnail) {
+    //Create the array of medias
+    thumbnails.forEach(function(thumbnail,index) {
 
         const image = thumbnail.querySelector("img");
         const video = thumbnail.querySelector("video");
@@ -15,7 +21,10 @@ function getMediaSources() {
                }
 
            mediasSources.push(mediaObj);
-           thumbnail.addEventListener('click', () => displayLightbox(mediaObj));
+           thumbnail.addEventListener('click', () => {
+                currentIndex = index;
+                displayLightbox(mediaObj)
+            });
 
         } else if (video !== null) {
             const mediaObj = {
@@ -24,15 +33,41 @@ function getMediaSources() {
                }
 
            mediasSources.push(mediaObj);
-           thumbnail.addEventListener('click', () => displayLightbox(mediaObj));
+           thumbnail.addEventListener('click', () => {
+                currentIndex = index;
+                displayLightbox(mediaObj)
+            });
 
         }
-        console.log(mediasSources);
-        return mediasSources;
     })
+
+    //Create logic for previous button
+    previousButton.addEventListener('click', () => {
+        if(currentIndex === 0) {
+            currentIndex = mediasSources.length - 1;
+            displayLightbox(mediasSources[currentIndex]);
+        } else {
+            currentIndex--;
+            displayLightbox(mediasSources[currentIndex]);
+        }
+    })
+
+    //Create logic for next button
+    nextButton.addEventListener('click', () => {
+        if (currentIndex === mediasSources.length-1) {
+            currentIndex = 0;
+            displayLightbox(mediasSources[currentIndex]);
+        } else {
+            currentIndex++;
+            displayLightbox(mediasSources[currentIndex]);
+        }
+    })
+
+    return mediasSources;
 }
 
 function displayLightbox(media) {
+
     const lightbox = document.querySelector('.lightbox');
     const mediaContainer = lightbox.querySelector('.lightbox-media-container');
     const lightboxImage = mediaContainer.querySelector('.lightbox-image');
@@ -71,11 +106,11 @@ function closeLightbox() {
 
 //Main function of the file
 function init() {
-    getMediaSources();
+    getMediasSources();
     closeLightbox();
 }
 
 window.addEventListener('load', () => {
-    init();
+    setTimeout(init ,200);
 });
 

@@ -3,7 +3,7 @@ function getMediasSources() {
 
     let currentIndex = 0;
 
-    const thumbnails = document.querySelectorAll('.thumbnail-container');
+    const thumbnails = document.querySelectorAll('.single-media');
     const previousButton = document.querySelector('.previous'); 
     const nextButton = document.querySelector('.next');
     let mediasSources = [];
@@ -12,11 +12,13 @@ function getMediasSources() {
     thumbnails.forEach(function(thumbnail,index) {
 
         const image = thumbnail.querySelector("img");
+        const mediaName = thumbnail.querySelector('.single-media-title').innerText;
         const video = thumbnail.querySelector("video");
 
         if (image !== null ) {
             const mediaObj = {
                 type: 'image',
+                name: mediaName,
                 source: image.src
                }
 
@@ -29,6 +31,7 @@ function getMediasSources() {
         } else if (video !== null) {
             const mediaObj = {
                 type: 'video',
+                name: mediaName,
                 source: video.src
                }
 
@@ -71,17 +74,20 @@ function displayLightbox(media) {
     const lightbox = document.querySelector('.lightbox');
     const mediaContainer = lightbox.querySelector('.lightbox-media-container');
     const lightboxImage = mediaContainer.querySelector('.lightbox-image');
-    const lightboxVideo = mediaContainer.querySelector('.lightbox-video'); 
+    const lightboxVideo = mediaContainer.querySelector('.lightbox-video');
+    const lightboxMediaName = mediaContainer.querySelector('.lightbox-media-name'); 
     
     //Create image or video depending on the media type and set its source
     if (media.type === 'image') {
         lightboxVideo.style.display = "none"
         lightboxImage.style.display = "initial";
         lightboxImage.setAttribute('src', media.source)
+        lightboxMediaName.innerHTML = media.name;
     } else if (media.type === 'video') {
         lightboxImage.style.display = "none";
         lightboxVideo.style.display = "initial"
         lightboxVideo.setAttribute('src', media.source)
+        lightboxMediaName.innerHTML = media.name;
     }
 
     //Change the display of the lightbox to flex

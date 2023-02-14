@@ -117,6 +117,6 @@ function init() {
 }
 
 window.addEventListener('load', () => {
-    setTimeout(init ,200);
+    setTimeout(init ,100);
 });
 

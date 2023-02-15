@@ -1,3 +1,5 @@
+import { updateMediasOrder } from "../pages/photographer.js";
+
 //Elements of dropdown
 let chevronUp;
 let chevronDown;
@@ -72,7 +74,9 @@ function onClickFilter() {
             const clickedTag = this.children[0];
             makeFilterFirst(clickedTag);
             createOrReorderFilters(filtersArray);
-            console.log(clickedTag);
+
+            const filterValue = clickedTag.attributes.value.value;
+            updateMediasOrder(filterValue);
         })
     })
 }

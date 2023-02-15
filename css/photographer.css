@@ -62,7 +62,7 @@
 .filter-bar-container {
     display: flex;
     position: relative;
-    margin: 2rem 0;
+    margin: 2rem 100px;
     z-index: 2;
 }
 

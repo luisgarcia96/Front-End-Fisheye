@@ -11,8 +11,7 @@ async function getPhotographerContent() {
     const photographer = await getPhotographerById(photographerId);
     const photographerMedia = await getPhotographerMedia(photographerId);
 
-    displayData(photographer, photographerMedia);
-
+    return [photographer, photographerMedia];
 }
 
 async function getPhotographerById(id) {
@@ -46,19 +45,43 @@ async function getPhotographerMedia(id) {
     return photographerMedia;
 }
 
-function displayData(photographer, photographerMedia) {
+function displayHeader(photographer) {
     
     //Generate the Header
     const photographerHeader = getProfileHeaderTemplate(photographer);
     
-    //Generate the media part
-    const profileMediaSection = getProfileMediasTemplate(photographer, photographerMedia);
-    
     const profileMainTag = document.querySelector("#main");
 
     profileMainTag.insertAdjacentHTML("beforeend", photographerHeader);
+}
+
+function displayMedias(photographer, photographerMedia) {
+
+    //Generate the media part
+    const profileMediaSection = getProfileMediasTemplate(photographer, photographerMedia);
+
+    const profileMainTag = document.querySelector("#main");
+
     profileMainTag.insertAdjacentHTML("beforeend", profileMediaSection);
+}
+
+export function updateMediasOrder(filter) {
+    console.log('this is the filter: ', filter);
+    const mediasContainer = document.querySelector('.medias-container');
+    console.log(mediasContainer);
+    
 }
 
 
 getPhotographerContent();
+
+async function init() {
+    const [photographer, photographerMedia] = await getPhotographerContent();
+
+    displayHeader(photographer);
+
+    photographerMedia.sort((a, b) => b._likes - a._likes); //By default the first view is sorted by popularity
+    displayMedias(photographer, photographerMedia);   
+}
+
+init();

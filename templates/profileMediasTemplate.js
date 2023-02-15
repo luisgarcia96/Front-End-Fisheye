@@ -28,26 +28,7 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
     
     let profilePageHeaderTemplate = `
         <section class="photographer-medias">
-            <div class="filter-bar-container">
-                <p class="filter-message">Trier par: </p>
-                <div class="filter-container">
-                    <div class="filters filter-selected">
-                        <div class="filter filter-1"></div>
-                        <div class="chevron-up">
-                            <i class="fa-solid fa-chevron-up"></i>
-                        </div>
-                        <div class="chevron-down">
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="filters filters-not-selected">
-                        <hr>
-                        <div class="filter filter-2"></div>
-                        <hr>
-                        <div class="filter filter-3"></div>
-                    </div>
-                </div>
-            </div>
+
             ${mediasContainer.outerHTML}
             <div class="price-likes-bottom-container">
                 <div class="total-likes-container">

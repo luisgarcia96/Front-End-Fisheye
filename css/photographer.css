@@ -172,6 +172,9 @@
     cursor: pointer;
 }
 
+.info-container .fa-solid {
+    display: none;
+}
 
 .single-media-title {
     font-weight: 400;

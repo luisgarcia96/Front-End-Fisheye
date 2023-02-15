@@ -4,6 +4,7 @@ import { getProfileHeaderTemplate } from "../../templates/profilePageHeaderTempl
 import { mediaFactory } from "../factories/mediaFactory.js";
 import { getProfileMediasTemplate } from "../../templates/profileMediasTemplate.js";
 import { enableLightbox } from "../utils/lightBox.js";
+import { enableLikesCounter } from "../utils/likesGestion.js";
 
 let photographerInfo;
 let photographerMediaArray;
@@ -70,7 +71,6 @@ function displayMedias(photographer, photographerMedia) {
 }
 
 export function updateMediasOrder(filter) {
-    const mediasContainer = document.querySelector('.medias-container');
 
     switch (filter) {
         case 'date':
@@ -91,11 +91,8 @@ export function updateMediasOrder(filter) {
 
     displayMedias(photographerInfo, photographerMediaArray);
     enableLightbox();
-    
+    enableLikesCounter();
 }
-
-
-getPhotographerContent();
 
 async function init() {
     [photographerInfo, photographerMediaArray] = await getPhotographerContent();

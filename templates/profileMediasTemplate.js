@@ -18,7 +18,10 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
                 <div class="info-container">
                     <p class="single-media-title">${title}</p>
                     <p class="single-media-likes">${likes}</p>
-                    <i class="fa-solid fa-heart"></i>
+                    <div class="like-button-container">
+                        <i class="fa-solid fa-heart"></i>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
                 </div>
             </div>
         `;

@@ -23,7 +23,7 @@ function getMediasSources() {
                }
 
            mediasSources.push(mediaObj);
-           thumbnail.addEventListener('click', () => {
+           image.addEventListener('click', () => {
                 currentIndex = index;
                 displayLightbox(mediaObj)
             });
@@ -36,7 +36,7 @@ function getMediasSources() {
                }
 
            mediasSources.push(mediaObj);
-           thumbnail.addEventListener('click', () => {
+           video.addEventListener('click', () => {
                 currentIndex = index;
                 displayLightbox(mediaObj)
             });

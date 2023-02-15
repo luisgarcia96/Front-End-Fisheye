@@ -26,9 +26,7 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
         mediasContainer.insertAdjacentHTML('beforeend', singleMediaTemplate);
     }
     
-    let profilePageHeaderTemplate = `
-        <section class="photographer-medias">
-
+    let profilePageHeaderTemplate = `  
             ${mediasContainer.outerHTML}
             <div class="price-likes-bottom-container">
                 <div class="total-likes-container">
@@ -36,8 +34,7 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
                     <i class="fa-solid fa-heart"></i>
                 </div>
                 <p class="price">${photographer.price}€ / jour</p>
-            </div>
-        </section>   
+            </div>   
     `;
 
     return profilePageHeaderTemplate;

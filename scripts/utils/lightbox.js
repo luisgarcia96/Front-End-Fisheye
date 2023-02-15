@@ -111,12 +111,12 @@ function closeLightbox() {
 
 
 //Main function of the file
-function init() {
+export function enableLightbox() {
     getMediasSources();
     closeLightbox();
 }
 
 window.addEventListener('load', () => {
-    setTimeout(init ,100);
+    setTimeout(enableLightbox ,100);
 });
 

@@ -3,6 +3,10 @@ import { photographerFactory } from "../factories/photographerFactory.js";
 import { getProfileHeaderTemplate } from "../../templates/profilePageHeaderTemplate.js";
 import { mediaFactory } from "../factories/mediaFactory.js";
 import { getProfileMediasTemplate } from "../../templates/profileMediasTemplate.js";
+import { enableLightbox } from "../utils/lightBox.js";
+
+let photographerInfo;
+let photographerMediaArray;
 
 async function getPhotographerContent() {
     const params = new URLSearchParams(window.location.search);
@@ -52,7 +56,7 @@ function displayHeader(photographer) {
     
     const profileMainTag = document.querySelector("#main");
 
-    profileMainTag.insertAdjacentHTML("beforeend", photographerHeader);
+    profileMainTag.insertAdjacentHTML("beforebegin", photographerHeader);
 }
 
 function displayMedias(photographer, photographerMedia) {
@@ -60,15 +64,33 @@ function displayMedias(photographer, photographerMedia) {
     //Generate the media part
     const profileMediaSection = getProfileMediasTemplate(photographer, photographerMedia);
 
-    const profileMainTag = document.querySelector("#main");
-
-    profileMainTag.insertAdjacentHTML("beforeend", profileMediaSection);
+    const mediasSection = document.querySelector(".photographer-medias");
+    mediasSection.innerHTML = '';
+    mediasSection.insertAdjacentHTML("beforeend", profileMediaSection);
 }
 
 export function updateMediasOrder(filter) {
-    console.log('this is the filter: ', filter);
     const mediasContainer = document.querySelector('.medias-container');
-    console.log(mediasContainer);
+
+    switch (filter) {
+        case 'date':
+            photographerMediaArray.sort(function (a, b) {
+                let dateA = new Date(a._date), dateB = new Date(b._date)
+                return dateA - dateB
+            });
+            break;
+        case 'title' :
+            photographerMediaArray.sort(function(a, b) {
+                return a._title.localeCompare(b._title);
+            });
+            break;
+        default:
+            photographerMediaArray.sort((a, b) => b._likes - a._likes);
+            break;
+    }
+
+    displayMedias(photographerInfo, photographerMediaArray);
+    enableLightbox();
     
 }
 
@@ -76,12 +98,12 @@ export function updateMediasOrder(filter) {
 getPhotographerContent();
 
 async function init() {
-    const [photographer, photographerMedia] = await getPhotographerContent();
+    [photographerInfo, photographerMediaArray] = await getPhotographerContent();
+    
+    displayHeader(photographerInfo);
 
-    displayHeader(photographer);
-
-    photographerMedia.sort((a, b) => b._likes - a._likes); //By default the first view is sorted by popularity
-    displayMedias(photographer, photographerMedia);   
+    photographerMediaArray.sort((a, b) => b._likes - a._likes); //By default the first view is sorted by popularity
+    displayMedias(photographerInfo, photographerMediaArray);   
 }
 
 init();

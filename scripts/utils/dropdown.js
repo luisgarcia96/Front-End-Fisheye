@@ -69,7 +69,7 @@ function onClickChevron() {
 }
 
 function onClickFilter() {
-    filtersContainers.forEach((filter, idx) => {
+    filtersContainers.forEach((filter) => {
         filter.addEventListener('click', function(){
             const clickedTag = this.children[0];
             makeFilterFirst(clickedTag);

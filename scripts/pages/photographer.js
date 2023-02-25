@@ -71,7 +71,6 @@ function displayMedias(photographer, photographerMedia) {
 }
 
 export function updateMediasOrder(filter) {
-
     switch (filter) {
         case 'date':
             photographerMediaArray.sort(function (a, b) {

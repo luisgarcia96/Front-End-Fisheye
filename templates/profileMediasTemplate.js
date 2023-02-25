@@ -6,7 +6,7 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
     let likesCounter = 0;
 
     for (const media of photographerMedia) {
-        const { title, name, likes, generateContent } = media;
+        const { title, likes, generateContent } = media;
 
         likesCounter += likes;
 
@@ -29,16 +29,16 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
         mediasContainer.insertAdjacentHTML('beforeend', singleMediaTemplate);
     }
     
-    let profilePageHeaderTemplate = `  
-            ${mediasContainer.outerHTML}
-            <div class="price-likes-bottom-container">
+    let profilePageMediasTemplate = `             
+            <div class="price-likes-bottom-container" tabindex="0">
                 <div class="total-likes-container">
                     <p class="total-likes">${likesCounter}</p>
                     <i class="fa-solid fa-heart"></i>
                 </div>
                 <p class="price">${photographer.price}€ / jour</p>
-            </div>   
+            </div>
+            ${mediasContainer.outerHTML}   
     `;
 
-    return profilePageHeaderTemplate;
+    return profilePageMediasTemplate;
 }

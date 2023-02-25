@@ -1,18 +1,20 @@
 
 export function getProfileHeaderTemplate(photographer) {
     
-    const { id, name, portrait, city, country, tagline } = photographer;
+    const { name, portrait, city, country, tagline } = photographer;
     
     let profilePageHeaderTemplate = `
         <section class="photograph-header">
             <div class="photograph-header-info">
-                <h2>${name}</h2>
-                <p class="city">${city}, ${country}</p>
-                <p class="tagline">${tagline}</p>
+                <h2 tabindex="0 ">${name}</h2>
+                <div tabindex="0    ">
+                    <p class="city">${city}, ${country}</p>
+                    <p class="tagline">${tagline}</p>
+                </div>
             </div>
             <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-            <div class="photograph-header-picture">
-                <img src="${portrait}"  alt="Photographer Picture">
+            <div class="photograph-header-picture" tabindex="0" aria-label="${name}">
+                <img src="${portrait}"  alt="">
             </div>
             </section>
             <div class="filter-bar-container">

@@ -11,13 +11,15 @@ export function getHomeCardTemplate(photographer) {
 
     let homeCardTemplate = `
         <article>
-            <a href="../photographer.html?id=${id}&name=${name}" class="profile_link">
-                <img src="${portrait}" alt="Photographer Profile">
+            <a href="../photographer.html?id=${id}&name=${name}" class="profile_link" tabindex="0" aria-label="${name}">
+                <img src="${portrait}" alt="">
                 <h2>${name}</h2>
             </a>
-            <p class="city">${city}, ${country}</p>
-            <p class="tagline">${tagline}</p>
-            <p class="price">${price}€/jour</p>
+            <div class="homecard_info" tabindex="0">
+                <p class="city">${city}, ${country}</p>
+                <p class="tagline">${tagline}</p>
+                <p class="price">${price}€/jour</p>
+            </div>
         </article>
     `;
 

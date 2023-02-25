@@ -54,6 +54,10 @@ h1 {
     margin-bottom: 0;
 }
 
+.photographer_section article .homecard_info {
+    text-align: center;
+}
+
 .photographer_section article .city {
     color: #901C1C;
     font-size: 0.813rem;

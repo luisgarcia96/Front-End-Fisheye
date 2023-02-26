@@ -22,13 +22,15 @@ async function getPhotographerContent() {
 async function getPhotographerById(id) {
 
     const api = new ApiJson('../../data/photographers.json');
+
     const data = await api.getData();
     const photographers = data.photographers;
+    const photographerMedia = await getPhotographerMedia(id);
 
     const photographer = photographerFactory(
-        photographers.find(photographer => photographer.id === id)
+        photographers.find(photographer => photographer.id === id),
+        photographerMedia
     );
-    
     return photographer;
 }
 

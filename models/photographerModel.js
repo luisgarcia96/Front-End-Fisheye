@@ -1,5 +1,5 @@
 export class Photographer {
-    constructor(data) {
+    constructor(data, medias) {
         this._id = data.id;
         this._name = data.name;
         this._portrait = data.portrait;
@@ -7,6 +7,7 @@ export class Photographer {
         this._city = data.city;
         this._country = data.country;
         this._tagline = data.tagline;
+        this._medias = medias;
     }
 
     get id() {
@@ -35,6 +36,19 @@ export class Photographer {
 
     get tagline() {
         return this._tagline;
+    }
+
+    get medias() {
+        return this._medias;
+    }
+
+    get totalLikes() {
+        let totalLikes = 0; 
+        this._medias.forEach(media => {
+            totalLikes += media.likes;
+        });
+
+        return totalLikes;
     }
 }
 

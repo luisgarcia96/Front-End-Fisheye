@@ -1,8 +1,10 @@
 
 export function getProfileHeaderTemplate(photographer) {
     
-    const { name, portrait, city, country, tagline } = photographer;
+    const { name, portrait, city, country, tagline, totalLikes, price } = photographer;
     
+
+
     let profilePageHeaderTemplate = `
         <section class="photograph-header">
             <div class="photograph-header-info">
@@ -17,8 +19,17 @@ export function getProfileHeaderTemplate(photographer) {
                 <img src="${portrait}"  alt="">
             </div>
             </section>
+
+            <div class="price-likes-bottom-container" tabindex="0">
+                <div class="total-likes-container">
+                    <p class="total-likes">${totalLikes}</p>
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <p class="price">${price}€ / jour</p>
+            </div>
+
             <div class="filter-bar-container">
-                <p class="filter-message">Trier par: </p>
+                <p class="filter-message" tabindex="0">Trier par: </p>
                 <div class="filter-container">
                     <div class="filters filter-selected">
                         <div class="filter filter-1"></div>

@@ -3,7 +3,7 @@ import { updateMediasOrder } from "../pages/photographer.js";
 //Elements of dropdown
 let chevronUp;
 let chevronDown;
-let filterSelectedContainer;
+let filterContainer;
 let filtersNotSelected;
 let filtersContainers;
 
@@ -55,12 +55,14 @@ function openDropdown() {
     filtersNotSelected.style.display = 'initial'
     chevronDown.style.display = 'none';
     chevronUp.style.display = 'initial';
+    filtersNotSelected.classList.add('active')
 }
 
 function closeDropdown() {
     filtersNotSelected.style.display = 'none'
     chevronDown.style.display = 'initial';
     chevronUp.style.display = 'none';
+    filtersNotSelected.classList.remove('active')
 }
 
 function onClickChevron() {
@@ -78,6 +80,27 @@ function onClickFilter() {
             const filterValue = clickedTag.attributes.value.value;
             updateMediasOrder(filterValue);
         })
+        filter.addEventListener('keydown', function(event){
+            if (event.key === 'Enter') {
+                const clickedButton = this;
+                clickedButton.setAttribute('aria-selected', true);
+                const buttonsNotSelected = filtersNotSelected.querySelectorAll('button');
+                buttonsNotSelected.forEach((btn) => {
+                    btn.setAttribute('aria-selected', false);        
+                })
+            }
+        })
+    })
+}
+
+function onFilterListKeyDown() {
+    filterContainer.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && !filtersNotSelected.classList.contains('active')) {
+            openDropdown();         
+        } else if (event.key === 'Enter' && filtersNotSelected.classList.contains('active')) {
+            closeDropdown();
+            //filterContainer.focus();
+        }
     })
 }
 
@@ -85,13 +108,14 @@ function init() {
 
     chevronUp = document.querySelector('.chevron-up');
     chevronDown = document.querySelector('.chevron-down');
-    filterSelectedContainer = document.querySelector('.filter-selected');
+    filterContainer = document.querySelector('.filter-container');
     filtersNotSelected = document.querySelector('.filters-not-selected');
     filtersContainers = document.querySelectorAll('.filter');   
    
     createOrReorderFilters();
     onClickChevron();
     onClickFilter();
+    onFilterListKeyDown();
 }
 
 window.addEventListener('load', () => {

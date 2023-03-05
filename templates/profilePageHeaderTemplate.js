@@ -29,10 +29,10 @@ export function getProfileHeaderTemplate(photographer) {
             </div>
 
             <div class="filter-bar-container">
-                <p class="filter-message" tabindex="0">Trier par: </p>
-                <div class="filter-container">
-                    <div class="filters filter-selected">
-                        <div class="filter filter-1"></div>
+                <label class="filter-message" id="filter-label" tabindex="0">Trier par: </label>
+                <div class="filter-container" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="filter-label">
+                    <div class="filters filter-selected" id="selected-filter" aria-activedescendant="filter-1" aria-labelledby="filter-label">
+                        <button class="filter filter-1" role="option" aria-selected="true"></button>
                         <div class="chevron-up">
                             <i class="fa-solid fa-chevron-up"></i>
                         </div>
@@ -40,11 +40,11 @@ export function getProfileHeaderTemplate(photographer) {
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                     </div>
-                    <div class="filters filters-not-selected">
+                    <div class="filters filters-not-selected" id="filter-list" role="listbox" aria-labelledby="filter-label">
                         <hr>
-                        <div class="filter filter-2"></div>
+                        <button class="filter filter-2" role="option" aria-selected="false"></button>
                         <hr>
-                        <div class="filter filter-3"></div>
+                        <button class="filter filter-3" role="option" aria-selected="false"></button>
                     </div>
                 </div>
             </div>

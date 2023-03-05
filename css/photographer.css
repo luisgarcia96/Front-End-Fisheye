@@ -64,6 +64,7 @@
     position: relative;
     margin: 2rem 100px;
     z-index: 2;
+    height: 3.5rem;
 }
 
 .filter-message {
@@ -109,10 +110,16 @@
   margin-bottom: 0;
   margin-left: 0.5rem;
   margin-right: 1rem;
+  background-color: #911C1C;
+  border: none;
+  color: #fff;
+  
 }
 
 .filter p {
     margin: 0;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 

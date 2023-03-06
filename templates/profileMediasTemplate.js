@@ -26,10 +26,7 @@ export function getProfileMediasTemplate(photographer, photographerMedia) {
         mediasContainer.insertAdjacentHTML('beforeend', singleMediaTemplate);
     }
     
-    let profilePageMediasTemplate = `             
-
-            ${mediasContainer.outerHTML}   
-    `;
+    let profilePageMediasTemplate = `${mediasContainer.outerHTML}`;
 
     return profilePageMediasTemplate;
 }

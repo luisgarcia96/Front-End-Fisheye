@@ -3,7 +3,7 @@ const closeModalButton = document.getElementById('closeModalButton');
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.setAttribute('tabindex', '0');   
-	modal.style.display = "block";
+	  modal.style.display = "block";
     modal.focus()
 }
 

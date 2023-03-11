@@ -91,7 +91,7 @@ export function updateMediasOrder(filter) {
     }
 
     displayMedias(photographerInfo, photographerMediaArray);
-    enableLightbox();
+    enableLightbox(photographerMediaArray);
     enableLikesCounter();
 }
 
@@ -101,7 +101,9 @@ async function init() {
     displayHeader(photographerInfo);
 
     photographerMediaArray.sort((a, b) => b._likes - a._likes); //By default the first view is sorted by popularity
-    displayMedias(photographerInfo, photographerMediaArray);   
+    displayMedias(photographerInfo, photographerMediaArray); 
+    
+    enableLightbox(photographerMediaArray);
 }
 
 init();

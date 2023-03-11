@@ -30,7 +30,9 @@ export class Image {
     get price() {
         return this._price;
     }
-
+    get source() {
+        return `../assets/images/${this._name}`;
+    }
     get generateContent() {
         return `
             <img src="../assets/images/${this._name}" alt=${this._title}/>

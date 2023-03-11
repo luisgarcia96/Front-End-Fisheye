@@ -30,6 +30,9 @@ export class Video {
     get price() {
         return this._price;
     }
+    get source() {
+        return `../assets/images/${this._name}`;
+    }
 
     get generateContent() {
         return `

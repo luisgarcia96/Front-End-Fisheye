@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -15,10 +15,12 @@
       </a>
     </header>
 
+    <!-- Main  -->
     <main id="main">
       <section class="photographer-medias"></section>
     </main>
     
+    <!-- Contact modal -->
     <div id="contact_modal" aria-labelledby="contactLabel">
 			<div class="modal">
 				<header>
@@ -46,19 +48,21 @@
 				</form>
 			</div>
 		</div>
-    <div class="lightbox">
-        <div class="lightbox-top">
-              <i class="fa-solid fa-xmark"></i>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-label="image closeup view">
+      <div class="lightbox-bottom">
+        <button class="previous">&lt;</button>
+        <div class="lightbox-media-container">
+          <img src="" alt="" class="lightbox-image">
+          <video src="" class="lightbox-video" controls autoplay>Your browser does not support this video</video>
+          <p class="lightbox-media-name"></p>
         </div>
-        <div class="lightbox-bottom">
-          <button class="previous">&lt;</button>
-          <div class="lightbox-media-container">
-            <img src="" alt="" class="lightbox-image">
-            <video src="" class="lightbox-video" controls autoplay>Your browser does not support this video</video>
-            <p class="lightbox-media-name"></p>
-          </div>
-          <button class="next">&gt;</button>
-        </div>
+        <button class="next">&gt;</button>
+      </div>
+      <div class="lightbox-top" tabindex="0">
+            <i class="fa-solid fa-xmark"></i>
+      </div>
     </div>
 
     <script type="module" src="/scripts/pages/photographer.js"></script>

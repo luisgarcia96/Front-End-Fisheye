@@ -15,7 +15,7 @@ export function getProfileHeaderTemplate(photographer) {
                 </div>
             </div>
             <button class="contact_button" id="contact_button" onclick="displayModal()">Contactez-moi</button>
-            <div class="photograph-header-picture" tabindex="0" aria-label="${name}">
+            <div class="photograph-header-picture" tabindex="0">
                 <img src="${portrait}"  alt="">
             </div>
             </section>
@@ -30,9 +30,9 @@ export function getProfileHeaderTemplate(photographer) {
 
             <div class="filter-bar-container">
                 <label class="filter-message" id="filter-label" tabindex="0">Trier par: </label>
-                <div class="filter-container" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="filter-label">
-                    <div class="filters filter-selected" id="selected-filter" aria-activedescendant="filter-1" aria-labelledby="filter-label">
-                        <button class="filter filter-1" role="option" aria-selected="true"></button>
+                <div class="filter-container" tabindex="0" role="button" aria-haspopup="listbox" aria-activedescendant="filter-1" aria-expanded="false" aria-labelledby="filter-label">
+                    <div class="filters filter-selected" id="selected-filter" aria-labelledby="filter-label">
+                        <button class="filter filter-1" role="option" aria-selected="true" id="filter-1"></button>
                         <div class="chevron-up">
                             <i class="fa-solid fa-chevron-up"></i>
                         </div>
@@ -42,9 +42,9 @@ export function getProfileHeaderTemplate(photographer) {
                     </div>
                     <div class="filters filters-not-selected" id="filter-list" role="listbox" aria-labelledby="filter-label">
                         <hr>
-                        <button class="filter filter-2" role="option" aria-selected="false"></button>
+                        <button class="filter filter-2" role="option" aria-selected="false" id="filter-2"></button>
                         <hr>
-                        <button class="filter filter-3" role="option" aria-selected="false"></button>
+                        <button class="filter filter-3" role="option" aria-selected="false" id="filter-3"></button>
                     </div>
                 </div>
             </div>

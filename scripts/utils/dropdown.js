@@ -83,6 +83,7 @@ function onClickFilter() {
         filter.addEventListener('keydown', function(event){
             if (event.key === 'Enter') {
                 const clickedButton = this;
+                // filterContainer.setAttribute('aria-activedescendant', clickedButton.attributes.id.value)
                 clickedButton.setAttribute('aria-selected', true);
                 const buttonsNotSelected = filtersNotSelected.querySelectorAll('button');
                 buttonsNotSelected.forEach((btn) => {

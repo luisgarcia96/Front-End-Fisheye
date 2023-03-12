@@ -1,65 +1,120 @@
-//Helper functions
-function setUpLightbox(photographerMedias) {
-    console.log(photographerMedias);
+import { Image } from "../../models/imageModel.js";
+import { Video } from "../../models/videoModel.js";
+
+//Lightbox elements
+const lightbox = document.querySelector('.lightbox');
+const closeIcon = lightbox.querySelector('.lightbox-top');
+const mediaContainer = lightbox.querySelector('.lightbox-media-container');
+const lightboxImage = mediaContainer.querySelector('.lightbox-image');
+const lightboxVideo = mediaContainer.querySelector('.lightbox-video');
+const lightboxMediaName = mediaContainer.querySelector('.lightbox-media-name'); 
+const previousButton = document.querySelector('.previous'); 
+const nextButton = document.querySelector('.next');
+
+//LightboxCurrentIndex
+let photographerPageMedias;
+let currentIndex;
+
+function setUpLightbox(medias) {
+
+    photographerPageMedias = medias;
 
     //Add listener to thumbnails
     const thumbnails = document.querySelectorAll('.thumbnail-container');
-    console.log(thumbnails);
 
     thumbnails.forEach((thumbnail, index) => {
-        const selectedMedia = photographerMedias[index];
 
-        //CLick
+        //Click
         thumbnail.addEventListener('click', () => {
-            displayLightbox(selectedMedia);
+            currentIndex = index;
+            displayLightbox();
         })
 
         //Keydown
         thumbnail.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                displayLightbox(selectedMedia);
+                currentIndex = index;
+                displayLightbox();
             }
         })
     })
 
+    // Add event listener to close lightbox when escape key is pressed
+    lightbox.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+        closeLightbox();
+        }
+    });
+
+    closeLightbox(thumbnails);
+
 }
 
-function displayLightbox(media) {
+function displayLightbox() {
 
-    const lightbox = document.querySelector('.lightbox');
-    const mediaContainer = lightbox.querySelector('.lightbox-media-container');
-    const lightboxImage = mediaContainer.querySelector('.lightbox-image');
-    const lightboxVideo = mediaContainer.querySelector('.lightbox-video');
-    const lightboxMediaName = mediaContainer.querySelector('.lightbox-media-name'); 
+    const selectedMedia = photographerPageMedias[currentIndex];
+
+    if (!selectedMedia) {
+        console.error('Media not found');
+        return;
+    }
     
-    //Create image or video depending on the media type and set its source
-    if (media.constructor.name === 'Image') {
+    //Set image or video source and display
+    setLightboxMedia(selectedMedia);
+
+    //Change the display of the lightbox to flex
+    lightbox.style.display = "flex";
+    lightbox.setAttribute('tabindex', '0'); 
+    lightbox.focus();
+
+    //Previous & Next Buttons logic
+    setPreviousButton();
+    setNextButton();
+}
+
+function setLightboxMedia(media) {
+    if (media instanceof Image) {
         lightboxVideo.style.display = "none"
         lightboxImage.style.display = "initial";
         lightboxImage.setAttribute('src', media.source)
         lightboxMediaName.innerHTML = media.title;
-    } else if (media.constructor.name === 'Video') {
+    } else if (media instanceof Video) {
         lightboxImage.style.display = "none";
         lightboxVideo.style.display = "initial"
         lightboxVideo.setAttribute('src', media.source)
         lightboxMediaName.innerHTML = media.title;
     }
-
-    //Change the display of the lightbox to flex
-    lightbox.style.display = "flex";
-    lightbox.setAttribute('tabindex', '0'); 
 }
 
-function closeLightbox() {
-    const lightbox = document.querySelector(".lightbox");
-    const closeIcon = lightbox.querySelector('.lightbox-top');
-    const lightboxImage = lightbox.querySelector('.lightbox-image');
-    const lightboxVideo = lightbox.querySelector('.lightbox-video');
+function setPreviousButton() {
 
+    // Remove any existing event listeners
+    previousButton.removeEventListener('click', previousButtonClickListener);
+    previousButton.removeEventListener('keydown', previousButtonKeydownListener);
+
+    previousButton.addEventListener('click', previousButtonClickListener);
+    previousButton.addEventListener('keydown', previousButtonKeydownListener);
+}
+
+function setNextButton() {
+
+    // Remove any existing event listeners
+    nextButton.removeEventListener('click', nextButtonClickListener);
+    nextButton.removeEventListener('keydown', nextButtonKeydownListener);
+
+    nextButton.addEventListener('click', nextButtonClickListener);
+    nextButton.addEventListener('keydown', nextButtonKeydownListener);
+}
+
+function closeLightbox(thumbnails) {
+    
     closeIcon.addEventListener('click', () => {
         lightboxImage.setAttribute('src', '');
         lightboxVideo.setAttribute('src', '');
         lightbox.style.display = "none";
+        thumbnails[currentIndex].focus();
+        // currentIndex = -1; // reset currentIndex when closing the lightbox
+        
     })
 
     closeIcon.addEventListener('keydown', (event) => {
@@ -67,19 +122,56 @@ function closeLightbox() {
             lightboxImage.setAttribute('src', '');
             lightboxVideo.setAttribute('src', '');
             lightbox.style.display = "none";
+            thumbnails[currentIndex].focus();
+            // currentIndex = -1; // reset currentIndex when closing the lightbox
         }
     })
+
 }
 
+//Listeners
+function previousButtonClickListener() {
+    if (currentIndex === 0) {
+        currentIndex = photographerPageMedias.length - 1;
+    } else {
+        currentIndex--;
+    }
+    setLightboxMedia(photographerPageMedias[currentIndex]);
+}
+function previousButtonKeydownListener(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (currentIndex === 0) {
+            currentIndex = photographerPageMedias.length - 1;
+        } else {
+            currentIndex--;
+        }
+        setLightboxMedia(photographerPageMedias[currentIndex]);
+    }
+}
 
+function nextButtonClickListener() {
+    if (currentIndex === photographerPageMedias.length - 1) {
+        currentIndex = 0;
+    } else {
+        currentIndex++;
+    }
+    setLightboxMedia(photographerPageMedias[currentIndex]);
+}
+function nextButtonKeydownListener(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (currentIndex === photographerPageMedias.length - 1) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        setLightboxMedia(photographerPageMedias[currentIndex]);
+    }
+}
 
 //Main function of the file
 export function enableLightbox(photographerMedias) {
     setUpLightbox(photographerMedias);
-    closeLightbox();
 }
-
-// window.addEventListener('load', () => {
-//     setTimeout(enableLightbox ,100);
-// });
 

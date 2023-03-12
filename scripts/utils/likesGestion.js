@@ -8,9 +8,15 @@ function addClickLikeEvent() {
         const singleMedialikeIconContainer = likeContainer.querySelector('.like-button-container')
         const singleMediaLikesContainer = likeContainer.querySelector('.single-media-likes')
 
-        singleMedialikeIconContainer.addEventListener('click', function() {
-            onClickLikeIcon(singleMedialikeIconContainer, singleMediaLikesContainer)
+        singleMedialikeIconContainer.addEventListener('click', () => {
+            onClickLikeIcon(singleMedialikeIconContainer, singleMediaLikesContainer);
         }); 
+
+        singleMedialikeIconContainer.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                onClickLikeIcon(singleMedialikeIconContainer, singleMediaLikesContainer);
+            }
+        })
     })
 }
 
@@ -60,8 +66,4 @@ function onClickLikeIcon(likeIconContainer, singleMediaLikesContainer) {
 export function enableLikesCounter() {
     addClickLikeEvent();
 }
-
-window.addEventListener('load', () => {
-    setTimeout(enableLikesCounter ,100);
-});
 

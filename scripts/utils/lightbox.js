@@ -113,7 +113,6 @@ function closeLightbox(thumbnails) {
         lightboxVideo.setAttribute('src', '');
         lightbox.style.display = "none";
         thumbnails[currentIndex].focus();
-        // currentIndex = -1; // reset currentIndex when closing the lightbox
         
     })
 
@@ -123,7 +122,6 @@ function closeLightbox(thumbnails) {
             lightboxVideo.setAttribute('src', '');
             lightbox.style.display = "none";
             thumbnails[currentIndex].focus();
-            // currentIndex = -1; // reset currentIndex when closing the lightbox
         }
     })
 
@@ -149,7 +147,6 @@ function previousButtonKeydownListener(event) {
         setLightboxMedia(photographerPageMedias[currentIndex]);
     }
 }
-
 function nextButtonClickListener() {
     if (currentIndex === photographerPageMedias.length - 1) {
         currentIndex = 0;

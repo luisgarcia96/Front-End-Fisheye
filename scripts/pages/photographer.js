@@ -102,6 +102,8 @@ async function init() {
 
     photographerMediaArray.sort((a, b) => b._likes - a._likes); //By default the first view is sorted by popularity
     displayMedias(photographerInfo, photographerMediaArray); 
+
+    enableLikesCounter();
     
     enableLightbox(photographerMediaArray);
 }

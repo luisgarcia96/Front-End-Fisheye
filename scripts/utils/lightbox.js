@@ -7,18 +7,21 @@ function setUpLightbox(photographerMedias) {
     console.log(thumbnails);
 
     thumbnails.forEach((thumbnail, index) => {
+        const selectedMedia = photographerMedias[index];
+
+        //CLick
         thumbnail.addEventListener('click', () => {
-            console.log('Index is : ', index);
-            console.log('Media is: ', photographerMedias[index]);
-            console.log(`Source will be: ${photographerMedias[index].source}`);
+            displayLightbox(selectedMedia);
+        })
+
+        //Keydown
+        thumbnail.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                displayLightbox(selectedMedia);
+            }
         })
     })
 
-    thumbnails.forEach((thumbnail, index) => {
-        thumbnail.addEventListener('keydown', (event) => {
-            console.log(event.key);
-        })
-    })
 }
 
 function displayLightbox(media) {
@@ -30,16 +33,16 @@ function displayLightbox(media) {
     const lightboxMediaName = mediaContainer.querySelector('.lightbox-media-name'); 
     
     //Create image or video depending on the media type and set its source
-    if (media.type === 'image') {
+    if (media.constructor.name === 'Image') {
         lightboxVideo.style.display = "none"
         lightboxImage.style.display = "initial";
         lightboxImage.setAttribute('src', media.source)
-        lightboxMediaName.innerHTML = media.name;
-    } else if (media.type === 'video') {
+        lightboxMediaName.innerHTML = media.title;
+    } else if (media.constructor.name === 'Video') {
         lightboxImage.style.display = "none";
         lightboxVideo.style.display = "initial"
         lightboxVideo.setAttribute('src', media.source)
-        lightboxMediaName.innerHTML = media.name;
+        lightboxMediaName.innerHTML = media.title;
     }
 
     //Change the display of the lightbox to flex

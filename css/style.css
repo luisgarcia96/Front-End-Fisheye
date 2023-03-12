@@ -83,3 +83,11 @@ h1 {
     border-radius: 50%;
     object-fit: cover
 }
+
+@media (min-width: 1440px) {
+    body {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+  

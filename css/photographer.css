@@ -146,16 +146,18 @@
 
 /* Medias section */
 .medias-container {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .single-media {
     max-width: 350px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem auto ;
 }
 
 .thumbnail-container {

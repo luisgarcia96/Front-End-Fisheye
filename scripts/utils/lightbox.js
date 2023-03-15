@@ -67,6 +67,15 @@ function displayLightbox() {
     lightbox.setAttribute('tabindex', '0'); 
     lightbox.focus();
 
+    //Set Arrows listeners
+    lightbox.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            nextImage();
+        } else if (event.key === 'ArrowLeft') {
+            previousImage();
+        }
+    })
+
     //Previous & Next Buttons logic
     setPreviousButton();
     setNextButton();
@@ -89,20 +98,20 @@ function setLightboxMedia(media) {
 function setPreviousButton() {
 
     // Remove any existing event listeners
-    previousButton.removeEventListener('click', previousButtonClickListener);
+    previousButton.removeEventListener('click', previousImage);
     previousButton.removeEventListener('keydown', previousButtonKeydownListener);
 
-    previousButton.addEventListener('click', previousButtonClickListener);
+    previousButton.addEventListener('click', previousImage);
     previousButton.addEventListener('keydown', previousButtonKeydownListener);
 }
 
 function setNextButton() {
 
     // Remove any existing event listeners
-    nextButton.removeEventListener('click', nextButtonClickListener);
+    nextButton.removeEventListener('click', nextImage);
     nextButton.removeEventListener('keydown', nextButtonKeydownListener);
 
-    nextButton.addEventListener('click', nextButtonClickListener);
+    nextButton.addEventListener('click', nextImage);
     nextButton.addEventListener('keydown', nextButtonKeydownListener);
 }
 
@@ -128,7 +137,7 @@ function closeLightbox(thumbnails) {
 }
 
 //Listeners
-function previousButtonClickListener() {
+function previousImage() {
     if (currentIndex === 0) {
         currentIndex = photographerPageMedias.length - 1;
     } else {
@@ -147,7 +156,7 @@ function previousButtonKeydownListener(event) {
         setLightboxMedia(photographerPageMedias[currentIndex]);
     }
 }
-function nextButtonClickListener() {
+function nextImage() {
     if (currentIndex === photographerPageMedias.length - 1) {
         currentIndex = 0;
     } else {

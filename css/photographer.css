@@ -41,6 +41,10 @@
     cursor: pointer;
 }
 
+.contact_button:hover, .contact_button:focus {
+    background-color: #D3573C;
+}
+
 .photograph-header-picture {
     height: 15rem;
     width: 15rem;

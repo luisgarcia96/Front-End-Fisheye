@@ -2,8 +2,6 @@
 export function getProfileHeaderTemplate(photographer) {
     
     const { name, portrait, city, country, tagline, totalLikes, price } = photographer;
-    
-
 
     let profilePageHeaderTemplate = `
         <section class="photograph-header">
